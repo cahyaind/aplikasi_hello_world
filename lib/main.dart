@@ -10,6 +10,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String message = "ini teks";
+
+  void tekanTombol() {
+    setState(() {
+      message = "Tombol sudah ditekan";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,10 +25,10 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(title: Text("Anonymous Method")),
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text("initeks"),
+        Text(message),
         RaisedButton(
           child: Text("Tekan"),
-          onPressed: null,
+          onPressed: tekanTombol,
         ),
       ])),
     ));
