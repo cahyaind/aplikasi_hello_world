@@ -10,13 +10,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String message = "ini teks";
-
-  void tekanTombol() {
-    setState(() {
-      message = "Tombol sudah ditekan";
-    });
-  }
+  String message = "teks ini";
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +22,11 @@ class _MyAppState extends State<MyApp> {
         Text(message),
         RaisedButton(
           child: Text("Tekan"),
-          onPressed: tekanTombol,
+          onPressed: () {
+            setState(() {
+              message = "Tombol sudah ditekan";
+            });
+          },
         ),
       ])),
     ));
