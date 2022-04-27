@@ -4,34 +4,78 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Widget> widgets = [];
+
+  _MyAppState() {
+    for (int i = 0; i < 20; i++)
+      widgets.add(Text("lorem ipsum ke " + i.toString(),
+          style: TextStyle(fontSize: 35)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("TextStyle"),
+          title: Text("ListView"),
         ),
-        body: Center(
-          child: Text(
-            "lorem ipsum",
-            style: TextStyle(
-              fontFamily: "Caveat",
-              fontSize: 30,
-              decoration: TextDecoration.underline,
-              decorationColor: Colors.blue,
-              decorationThickness: 5,
-              decorationStyle: TextDecorationStyle.wavy,
-            ),
-          ),
+        body: ListView(
+          children: <Widget>[
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              RaisedButton(
+                onPressed: null,
+                child: Text("Tambah Data"),
+              ),
+              RaisedButton(
+                onPressed: null,
+                child: Text("Hapus Data"),
+              ),
+            ]),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: widgets,
+            )
+          ],
         ),
       ),
     );
   }
 }
 
-// IMPLEMENTASI ANONYMOUS METHOD
+// IMPLEMENTASI TEXTSTYLE
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text("TextStyle"),
+//         ),
+//         body: Center(
+//           child: Text(
+//             "lorem ipsum",
+//             style: TextStyle(
+//               fontFamily: "Caveat",
+//               fontSize: 30,
+//               decoration: TextDecoration.underline,
+//               decorationColor: Colors.blue,
+//               decorationThickness: 5,
+//               decorationStyle: TextDecorationStyle.wavy,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
+// IMPLEMENTASI ANONYMOUS METHOD
 // class MyApp extends StatefulWidget {
 //   @override
 //   State<MyApp> createState() => _MyAppState();
