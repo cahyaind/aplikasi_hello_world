@@ -11,12 +11,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Widget> widgets = [];
+  int counter = 1;
 
-  _MyAppState() {
-    for (int i = 0; i < 20; i++)
-      widgets.add(Text("lorem ipsum ke " + i.toString(),
-          style: TextStyle(fontSize: 35)));
-  }
+  // This is Constructors
+  // Konstruktor adalah fungsi khusus dari kelas yg bertanggungjawab
+  // utk menginisialisasi variabel class. Dart mendefinisikan konstruktor dg nama
+  // yg sama dengan nama class. Konstruktor: fungsi dan karenanya dpt diparameterisasi.
+
+  // _MyAppState() {
+  //   for (int i = 0; i < 20; i++)
+  //     widgets.add(Text("lorem ipsum ke " + i.toString(),
+  //         style: TextStyle(fontSize: 35)));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +35,24 @@ class _MyAppState extends State<MyApp> {
           children: <Widget>[
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               RaisedButton(
-                onPressed: null,
+                onPressed: () {
+                  setState(() {
+                    widgets.add(Text(
+                      "lorem ipsum ke " + counter.toString(),
+                      style: TextStyle(fontSize: 35),
+                    ));
+                    counter++;
+                  });
+                },
                 child: Text("Tambah Data"),
               ),
               RaisedButton(
-                onPressed: null,
+                onPressed: () {
+                  setState(() {
+                    widgets.removeLast();
+                    counter--;
+                  });
+                },
                 child: Text("Hapus Data"),
               ),
             ]),
